@@ -1,0 +1,47 @@
+
+.l{
+    color: beige;
+    padding-left: 900px;
+     text-decoration: none;
+}
+.navbarr1 , .navbarr2{
+    text-decoration: none; 
+    width: 40%px;
+    margin: 10px;
+    padding-inline-start:275px;
+  
+}
+
+.navbarr2{
+    text-decoration: none; 
+    width: 40%px;
+    margin: 10px;
+    padding-inline-start:275px;
+  margin-top: 25px;
+  font-size: 22px;
+}
+
+
+.nav-item active{
+    list-style-type: none;
+    overflow: hidden;
+}
+li{
+    display: block;
+    margin-right: 30px;
+    
+}
+
+.nav-link{
+    color: rgb(116, 35, 35);
+    margin-right: 11px;
+    padding-left: 11px;
+}
+.a{
+    text-decoration: none;
+}
+.navbar{
+    
+    display: flex;
+    background-color: blueviolet;
+}
