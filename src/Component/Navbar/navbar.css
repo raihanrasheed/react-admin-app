@@ -4,21 +4,26 @@
     padding-left: 900px;
      text-decoration: none;
 }
-.navbarr1 , .navbarr2{
+.navbarr1 {
     text-decoration: none; 
     width: 40%px;
     margin: 10px;
     padding-inline-start:275px;
+  
+    margin-right: 1000px;
   
 }
 
 .navbarr2{
     text-decoration: none; 
     width: 40%px;
-    margin: 10px;
-    padding-inline-start:275px;
+    margin: 560px;
+    padding-inline-start:475px;
   margin-top: 25px;
   font-size: 22px;
+  z-index: 1;
+  position: absolute;
+  top: -10px;
 }
 
 
@@ -41,7 +46,23 @@ li{
     text-decoration: none;
 }
 .navbar{
-    
+   margin-top: 3px; 
     display: flex;
     background-color: blueviolet;
+}
+ul{
+    overflow: hidden;
+
+}
+
+.navbarr3{
+    text-decoration: none; 
+    width: 40%px;
+    margin: 560px;
+    padding-inline-start:368px;
+  margin-top: 25px;
+  font-size: 22px;
+  z-index: 1;
+  position: absolute;
+  top: -10px;
 }

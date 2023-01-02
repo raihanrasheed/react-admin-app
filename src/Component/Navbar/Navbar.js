@@ -8,84 +8,46 @@ export default function Navbar({ isLoginUser, logout }) {
   console.log("navbar", isLoginUser);
   return (
     <>
-    <div>
-
-   
-      <div className="navbar">
-        <ul className=" ">
-          <li >
+      <div>
+        <div className="navbar">
+          <li>
             <h2 className="navbarr1">React Auth </h2>
           </li>
-         </ul>
-       
+        </div>
 
-          <div>
-          <ul className="navbarr2">
-                  <li >
-                    <a className="navbarr1" href="login">
+  
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          {isLoginUser ? (
+            <>
+            <ul>
+              <li className="nav-item">
+                <NavLink className="navbarr2" to="profile">
+                  Profile
+                </NavLink>
+              </li>
+
+              <li className="nav-item active">
+                <a className="navbarr3" href="logout">
+                  Logout
+                </a>
+              </li></ul>
+            </>
+          ) : (
+            < div className="">
+            
+                <ul >
+                  <li className="nav-item">
+                    <a className="navbarr2" href="login">
                       Login
                     </a>
                   </li>
-                  </ul>
-              </div>      
- </div>
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-          ></button> */}
+                </ul>
+             
+            </div>
+          )}
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            {isLoginUser ? (
-              <>
-                <li className="nav-item">
-                  <NavLink className="navbarr" to="profile">
-                    Profile
-                  </NavLink>
-                </li>
-
-                <li className="nav-item active">
-                  <a className="navbarr" href="logout">
-                    Logout
-                  </a>
-                </li>
-              </>
-            ) : (
-              <></>
-            )}
-            {/* 
-            // {!isLoginUser ? (
-            //   <>
-            //     {" "}
-            //     <ul className="navbar-nav ms-auto">
-            //       <li className="nav-item">
-            //         <a className="navbarr" href="login">
-            //           Login
-            //         </a>
-            //       </li>
-            //       <li className="nav-item">
-            //         <a className="navbarr" href="register">
-            //           Register
-            //         </a>
-            //       </li>
-            //     </ul>
-            //   </>
-            // ) : (
-            //   <>
-            //     <ul>
-            //       <li className="nav-item">
-            //         <a className="l" href="login" onClick={logout}>
-            //           Logout
-            //         </a>
-            //       </li>
-            //     </ul>
-            //   </>
-            // )} */}
-          </div>
-     
+        </div>
       </div>
     </>
   );

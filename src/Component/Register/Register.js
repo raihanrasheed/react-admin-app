@@ -132,13 +132,10 @@ export default function Register() {
             />
           </div>
         </div>
-        {/* <div className="form-check my-3">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-  </div> */}
+    
 
         <div className="form-check mt-5">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="createnewaccount">
             {loading ? "Wait plz!" : "Create account"}
           </button>
         </div>

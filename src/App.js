@@ -1,17 +1,16 @@
-
 import Navbar from "./Component/Navbar/Navbar";
 import Profile from "./Component/Profile/Profile";
 import Login from "./Component/Login/Login";
 import Register from "./Component/Register/Register";
-//import Logout from "./Component/Logout/Logout";
+import Logout from "./Component/Logout/Logout";
 import { Navigate, Route, Routes } from "react-router-dom";
-
+import Home from "./Component/Home/Home";
 import { useNavigate } from "react-router-dom";
-import ProtectedRoutes from "./Component/ProtectedRoutes/ProtectedRoutes";
+
+import Protected from "./Component/Protected/Protected";
 import "./App.css";
 import { useState, useEffect } from "react";
-//import { jwtDecode } from 'jwt-decode';
-
+import jwtDecode from "jwt-decode";
 
 function App() {
   let [isLoginUser, setisLoginUser] = useState(false);
@@ -20,65 +19,56 @@ function App() {
   function setUserDate() {
     let idToken = localStorage.getItem("idToken");
     if (idToken) {
-      //let decoded = jwtDecode(idToken);
-    //  console.log(decoded);
+      let decoded = jwtDecode(idToken);
+      console.log(decoded);
       setisLoginUser(true);
-      console.log(Date.now())
-    //   if(decoded.exp * 1000 <  Date.now()){
-       // console.log('yessssssssss');
+      console.log(Date.now());
+      if (decoded.exp * 1000 < Date.now()) {
+        console.log("yessssssssss");
         setisLoginUser(false);
-       }
-      //  else
-      //   { setisLoginUser(true)}
-      // }
-      // else {
-        setisLoginUser(false)
-      //}
-
-     // console.log("hjghjhj");
-      //setLoginData(decoded);
-
-      //console.log(loginData);
-    
+      } else {
+        setisLoginUser(true);
+      }
+      console.log("gttrthtrh");
+    } else {
+      setisLoginUser(false);
+    }
   }
   useEffect(() => {
     if (localStorage.getItem("idToken")) {
       setUserDate();
-      //setisLoginUser(true);
     }
   }, []);
 
   function goToLogin() {
     localStorage.removeItem("idToken");
-   // setisLoginUser(null);
-   setisLoginUser(false)
+    // setisLoginUser(null);
+    setisLoginUser(false);
     Navigate("/login");
   }
-
-  // let navigate=useNavigate();
-  //  function goToLogin(){
-  //   let path= '/login';
-  //   navigate(path);
-  // }
 
   return (
     <div className="">
       <Navbar isLoginUser={isLoginUser} logout={goToLogin} />
       <div className="container">
         <Routes>
+          <Route element={<Protected loginData={isLoginUser} />}></Route>
+          <Route
+            path="profile"
+            element={<Profile setLoginData={setisLoginUser} />}
+          ></Route>
 
-          <Route element={<ProtectedRoutes loginData={isLoginUser} />}>
-            
-            <Route path="profile" element={<Profile setLoginData={setisLoginUser}  />}></Route>
-           
- </Route>
+          <Route element={<Home />} path="/"></Route>
 
           <Route
             path="login"
             element={<Login setLoginData={setisLoginUser} />}
           ></Route>
-             <Route path="register" element={<Register />}></Route>
-          {/* <Route path="login" element={<Logout />}></Route> */}
+          <Route path="register" element={<Register />}></Route>
+          <Route
+            path="logout"
+            element={<Logout setIsLogInUser={setisLoginUser} />}
+          ></Route>
         </Routes>
       </div>
     </div>
